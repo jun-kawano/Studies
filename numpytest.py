@@ -1,14 +1,13 @@
 import numpy as np
 
-coef_inp = input("Enter the coefficients: ")
-x = input("Enter the x value: ")
-x = float(x)
+inp = input("Enter the coefficients: ").split()
+inp2 = input("Enter the x value: ")
 
+x = float(inp2)
 
-coef_inp.split()
 coef = []
-for n in coef_inp:
-    if n.isnumeric():
-        coef.append(float(n))
+for n in inp:
+    n = float(n)
+    coef.append(float(n))
 
 print(np.polyval(coef, x))
