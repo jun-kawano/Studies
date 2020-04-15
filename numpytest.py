@@ -1,10 +1,11 @@
 import numpy as np
 
-inp = input().split()
+coef_inp = input("Enter the coefficients: ")
+x = input("Enter the x value: ")
+x = float(x)
 
-x = float(inp[-1])
-coef_inp = inp[0:len(inp)-1]
 
+coef_inp.split()
 coef = []
 for n in coef_inp:
     if n.isnumeric():
