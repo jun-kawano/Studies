@@ -1,4 +1,5 @@
 import email.utils
+import re
 n = int(input())
 raw_emails = []
 for i in range(n):
