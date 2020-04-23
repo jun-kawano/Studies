@@ -7,29 +7,14 @@ for i in range(n):
 valid_emails = []
 
 def user_check(user1):
-    if user1[0].isalpha():
-        pass
-    else:
+    if re.search(r"^[^A-Za-z][^0-9\w\.-]*", user1):
         return False
-    while "-" in user1:
-        a1 = user1.index("-")
-        user1 = user1[: a1] + user1[a1+1 :]
-    while "." in user1:
-        a2 = user1.index(".")
-        user1 = user1[: a2] + user1[a2+1 :]
-    while "_" in user1:
-        a3 = user1.index("_")
-        user1 = user1[: a3] + user1[a3+1 :]
-    if user1[1:].isalnum():
-        return True
-    else:
-        return False
+    return True
 
 for item in raw_emails:
     name, email_addr = email.utils.parseaddr(item)
 
     if "@" in email_addr and "." in email_addr:
-
 
         i1 = email_addr.index("@")
 
