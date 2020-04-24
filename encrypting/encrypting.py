@@ -7,6 +7,11 @@ key = keyfile.read() #bytes
 keyfile.close()
 fernet = Fernet(key)
 
+#erase contents of key.key
+f = open("key.key", "w")
+f.write("Execute key.py")
+f.close()
+
 #encrypt or decrypt
 mode = ""
 while True:
@@ -25,7 +30,8 @@ with open(file_name, "rb") as f:
 if mode == "y":
     encrypted = fernet.encrypt(data)
     #write the encrypted file
-    with open(f"{file_name}.encrypted", "wb") as f:
+    new_file = f"{file_name}.encrypted"
+    with open(new_file, "wb") as f:
         f.write(encrypted)
 
 #decrypt
@@ -34,9 +40,8 @@ if mode == "n":
     #write the decrypted file
     index = file_name.index(".encrypted")
     file_name = file_name[:index]
-    with open(f"{file_name}.decrypted", "wb") as f:
+    new_file = f"{file_name}.decrypted"
+    with open(new_file, "wb") as f:
         f.write(decrypted)
-
-f = open("key.key", "w")
-f.write("Execute key.py")
-f.close()
+    #print the decrypted message
+    print(decrypted)
