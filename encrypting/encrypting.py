@@ -10,7 +10,7 @@ while True:
         if key:
             break
     except:
-        input("Execute 'key.py' first and the press enter")
+        input("Execute 'key.py' and then press enter")
 
 #erase contents of key.key
 f = open("key.key", "w")
@@ -42,10 +42,17 @@ if mode == "y":
     new_file = f"{file_name}.encrypted"
     with open(new_file, "wb") as f:
         f.write(encrypted)
+    print("A encrypted file has been created")
+    input("Press enter to exit")
 
 #decrypt
 if mode == "n":
-    decrypted = fernet.decrypt(data)
+    while True:
+        try:
+            decrypted = fernet.decrypt(data)
+        except:
+            print("Invalid key")
+            input("Execute 'key.py' using the correct password and then press enter")
     while True:
         save = input("Save decrypted file (y/n)? ").lower().strip()
         if save == "y" or save == "n":
