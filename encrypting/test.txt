@@ -1,1 +1,5 @@
-batatabanana123
+Password for site A: password1
+Password for site B: password2
+Password for site C: password3
+Password for site D: password4
+Password for site E: password5
