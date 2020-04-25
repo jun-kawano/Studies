@@ -21,6 +21,14 @@ while True:
     if mode == "y" or mode == "n":
         break
 
+#read and delete or not
+while True:
+    read = input("Read result file (y/n)? ").lower().strip()
+    print(type(read))
+    print(read)
+    if read == "y" or read == "n":
+        break
+
 #open the file to encrypt
 file_name = input("Enter the file to be encrypted/decrypted: ")
 with open(file_name, "rb") as f:
