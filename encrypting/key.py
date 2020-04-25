@@ -8,7 +8,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 password_provided = input("Enter password: ") #string
 password = password_provided.encode() #convert to bytes
 
-salt = b'\x16\x1b=\xb9x\xa0\xc5\xef9\xe1\xb0k\x7f\xc1t\xd8'
+salt = b'\x16\x1b=\xb9x\xa0\xc5\xef9\xe1\xb0k\x7f\xc1t\xd8' #salt came from os.urandom(16)
 
 kdf = PBKDF2HMAC (
     algorithm=hashes.SHA256(),
