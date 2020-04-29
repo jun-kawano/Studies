@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+import os
 fernet = ""
 #get the key from file
 while True:
@@ -35,6 +36,13 @@ while True:
     except:
         print("File not found")
 
+#delete or keep the original fileaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+delete_file = ""
+while True:
+    delete_file = input("Delete the original file (y/n)? ").lower().strip()
+    if delete_file == "y" or delete_file == "n":
+        break
+
 #encrypt
 if mode == "y":
     encrypted = fernet.encrypt(data)
@@ -53,6 +61,8 @@ if mode == "n":
         except:
             print("Invalid key")
             input("Execute 'key.py' using the correct password and then press enter")
+        if decrypted:
+            break
     while True:
         save = input("Save decrypted file (y/n)? ").lower().strip()
         if save == "y" or save == "n":
@@ -72,3 +82,10 @@ if mode == "n":
         print(f"Content of {file_name}: \n")
         print(decrypted.decode())
         input("\nPress enter to exit")
+
+#delete file
+if delete_file == "y":
+    os.remove(file_name)
+    print(f"{file_name}has been deleted")
+
+input("Press enter to exit")
