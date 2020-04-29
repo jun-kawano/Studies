@@ -51,7 +51,6 @@ if mode == "y":
     with open(new_file, "wb") as f:
         f.write(encrypted)
     print("A encrypted file has been created")
-    input("Press enter to exit")
 
 #decrypt
 if mode == "n":
@@ -77,15 +76,15 @@ if mode == "n":
 
         with open(new_file, "wb") as f:
             f.write(decrypted)
-    else:
-    #print the decrypted message
-        print(f"Content of {file_name}: \n")
-        print(decrypted.decode())
-        input("\nPress enter to exit")
+    #else:
+#print the decrypted message
+    print(f"Content of {file_name}: \n")
+    print(decrypted.decode())
+    print("\n")
 
 #delete file
 if delete_file == "y":
     os.remove(file_name)
-    print(f"{file_name}has been deleted")
+    print(f"{file_name} has been deleted")
 
 input("Press enter to exit")
