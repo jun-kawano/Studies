@@ -1,5 +1,7 @@
 from cryptography.fernet import Fernet
 import os
+
+
 fernet = ""
 #get the key from file
 while True:
@@ -47,10 +49,18 @@ while True:
 if mode == "y":
     encrypted = fernet.encrypt(data)
     #write the encrypted file
-    new_file = f"{file_name}.encrypted"
+
+    if ".decrypted" in file_name:
+        index = file_name.index(".decrypted")
+        new_file = file_name[:index]
+        new_file = f"{new_file}.encrypted"
+    
+    else:
+        new_file = f"{file_name}.encrypted"
+
     with open(new_file, "wb") as f:
         f.write(encrypted)
-    print("A encrypted file has been created")
+    print(f"\n{new_file} has been created")
 
 #decrypt
 if mode == "n":
@@ -70,15 +80,16 @@ if mode == "n":
     if save == "y":
         #write the decrypted file
         index = file_name.index(".encrypted")
-        file_name = file_name[:index]
+        new_file = file_name[:index]
 
-        new_file = f"{file_name}.decrypted"
+        new_file = f"{new_file}.decrypted"
 
         with open(new_file, "wb") as f:
             f.write(decrypted)
+        print(f"\n{new_file} has been created")
     #else:
 #print the decrypted message
-    print(f"Content of {file_name}: \n")
+    print(f"\nContent of {file_name}: \n")
     print(decrypted.decode())
     print("\n")
 
